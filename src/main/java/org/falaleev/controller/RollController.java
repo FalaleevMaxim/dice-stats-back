@@ -1,11 +1,8 @@
 package org.falaleev.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.falaleev.model.CharacterCreateDto;
-import org.falaleev.model.CharacterDto;
 import org.falaleev.model.RollAddRequest;
 import org.falaleev.model.RollHistoryItem;
-import org.falaleev.service.CharacterService;
 import org.falaleev.service.RollService;
 import org.springframework.web.bind.annotation.*;
 

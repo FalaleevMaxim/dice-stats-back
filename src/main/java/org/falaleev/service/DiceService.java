@@ -8,7 +8,7 @@ import java.util.UUID;
 public interface DiceService {
     List<DiceDto> getAll();
 
-    DiceDto add(String name, byte[] image);
+    DiceDto add(String name, String image);
 
-    DiceDto update(UUID id, String name, byte[] image);
+    DiceDto update(UUID id, String name, String image);
 }

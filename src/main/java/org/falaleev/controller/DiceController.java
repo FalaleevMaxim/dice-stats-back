@@ -1,12 +1,11 @@
 package org.falaleev.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.falaleev.model.DiceCreateRequest;
 import org.falaleev.model.DiceDto;
 import org.falaleev.service.DiceService;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,16 +20,14 @@ public class DiceController {
         return service.getAll();
     }
 
-    @PostMapping(value = "/add", consumes = "multipart/form-data")
-    public DiceDto add(@RequestParam("image") MultipartFile file,
-                       @RequestParam("name") String name) throws IOException {
-        return service.add(name, file.getBytes());
+    @PostMapping(value = "/add")
+    public DiceDto add(@RequestBody DiceCreateRequest diceCreateRequest) {
+        return service.add(diceCreateRequest.name(), diceCreateRequest.image());
     }
 
-    @PutMapping(value = "/{id}", consumes = "multipart/form-data")
-    public DiceDto update(@RequestParam("image") MultipartFile file,
-                          @RequestParam("name") String name,
-                          @PathVariable("id") UUID id) throws IOException {
-        return service.update(id, name, file.getBytes());
+    @PutMapping(value = "/{id}")
+    public DiceDto update(@RequestBody DiceCreateRequest diceCreateRequest,
+                          @PathVariable("id") UUID id) {
+        return service.update(id, diceCreateRequest.name(), diceCreateRequest.image());
     }
 }
