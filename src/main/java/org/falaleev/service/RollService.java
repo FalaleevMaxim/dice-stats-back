@@ -57,11 +57,10 @@ public class RollService {
                 -> criteriaBuilder.greaterThanOrEqualTo(root.get("date"), from);
         Specification<RollEntity> toSpecification = (root, query, criteriaBuilder)
                 -> criteriaBuilder.lessThanOrEqualTo(root.get("date"), to);
-        Specification<RollEntity> specification = Specification.where(diceSpecification)
-                .and(characterSpecification)
-                .and(fromSpecification)
-                .and(toSpecification)
-                .and(toSpecification);
+        Specification<RollEntity> specification = Specification.where(diceId == null ? null : diceSpecification)
+                .and(characterId == null ? null : characterSpecification)
+                .and(from == null ? null : fromSpecification)
+                .and(to == null ? null : toSpecification);
 
         if (limit != null) {
             Pageable pageable = PageRequest.of(0, limit, Sort.by(Sort.Direction.DESC, "date"));

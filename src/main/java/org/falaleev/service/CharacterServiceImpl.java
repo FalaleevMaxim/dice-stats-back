@@ -18,7 +18,7 @@ public class CharacterServiceImpl implements CharacterService {
     private final CharacterMapper mapper;
 
     @Override
-    public List<CharacterDto> getAllCharacters() {
+    public List<CharacterDto> getAll() {
         return repository.findAll().stream().map(mapper::toDto).toList();
     }
 
@@ -35,5 +35,10 @@ public class CharacterServiceImpl implements CharacterService {
         CharacterEntity character = repository.findById(id).orElseThrow(() -> new RuntimeException("Character not found"));
         character.setName(name);
         return mapper.toDto(repository.save(character));
+    }
+
+    @Override
+    public CharacterDto getById(UUID id) {
+        return repository.findById(id).map(mapper::toDto).orElseThrow(() -> new RuntimeException("Character not found"));
     }
 }

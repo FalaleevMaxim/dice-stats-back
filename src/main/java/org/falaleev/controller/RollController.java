@@ -18,11 +18,11 @@ public class RollController {
 
     @GetMapping("/history")
     public List<RollHistoryItem> getHistory(
-            @RequestParam(required = false) Integer limit,
-            @RequestParam(required = false) LocalDateTime from,
-            @RequestParam(required = false) LocalDateTime to,
-            @RequestParam(required = false) UUID diceId,
-            @RequestParam(required = false) UUID characterId
+            @RequestParam(name = "limit", required = false) Integer limit,
+            @RequestParam(name = "from", required = false) LocalDateTime from,
+            @RequestParam(name = "to", required = false) LocalDateTime to,
+            @RequestParam(name = "diceId", required = false) UUID diceId,
+            @RequestParam(name = "characterId", required = false) UUID characterId
             ) {
         return rollService.getHistory(limit, from, to, diceId, characterId);
     }

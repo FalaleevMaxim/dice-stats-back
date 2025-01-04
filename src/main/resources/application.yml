@@ -3,11 +3,17 @@ spring:
     url: jdbc:sqlite:database.db
     driver-class-name: org.sqlite.JDBC
   jpa:
+    show-sql: true
     database-platform: org.hibernate.community.dialect.SQLiteDialect
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
+        format_sql: true
         jdbc:
           lob:
             non_contextual_creation: true
+
+  # Включение логирования запросов с параметрами
+logging.level.org.hibernate.SQL: DEBUG
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder: TRACE

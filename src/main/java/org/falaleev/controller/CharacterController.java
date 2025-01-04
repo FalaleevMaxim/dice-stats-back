@@ -16,8 +16,13 @@ public class CharacterController {
     private final CharacterService characterService;
 
     @GetMapping("/all")
-    public List<CharacterDto> getAllCharacters() {
-        return characterService.getAllCharacters();
+    public List<CharacterDto> getAll() {
+        return characterService.getAll();
+    }
+
+    @GetMapping("/{id}")
+    public CharacterDto getById(@PathVariable("id") UUID id) {
+        return characterService.getById(id);
     }
 
     @PostMapping("/add")
