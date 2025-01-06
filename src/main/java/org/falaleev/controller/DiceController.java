@@ -20,6 +20,11 @@ public class DiceController {
         return service.getAll();
     }
 
+    @GetMapping("/{id}")
+    public DiceDto getById(@PathVariable("id") UUID id) {
+        return service.getById(id);
+    }
+
     @PostMapping(value = "/add")
     public DiceDto add(@RequestBody DiceCreateRequest diceCreateRequest) {
         return service.add(diceCreateRequest.name(), diceCreateRequest.image());

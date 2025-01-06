@@ -38,4 +38,9 @@ public class DiceServiceImpl implements DiceService {
         dice.setImage(image);
         return mapper.toDto(repository.save(dice));
     }
+
+    @Override
+    public DiceDto getById(UUID id) {
+        return repository.findById(id).map(mapper::toDto).orElseThrow(() -> new RuntimeException("Dice not found"));
+    }
 }

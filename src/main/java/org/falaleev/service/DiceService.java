@@ -11,4 +11,6 @@ public interface DiceService {
     DiceDto add(String name, String image);
 
     DiceDto update(UUID id, String name, String image);
+
+    DiceDto getById(UUID id);
 }
